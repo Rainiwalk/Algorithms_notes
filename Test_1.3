@@ -1,1 +1,63 @@
+## 1.3.3
+
+```java
+//其实这题观察即可，但为了保证有很多数据时好办，于是写一下代码
+
+import java.util.Scanner; 
+ 
+public class Test { 
+ 
+        public static void main(String[] args) { 
+                Scanner sc = new Scanner(System.in); 
+                 
+                int in[] = {0,1,2,3,4,5,6,7,8,9};               //输入栈 
+                int N = in.length;                              //长度 
+                int out[] = new int[N];                         //输出栈 
+                int a[] = new int[N+5];                         //处理栈 
+                 
+                //题意：给定输入栈，判断出栈序列的合理性 
+                 
+                System.out.println("请输入待判断的出栈序列:"); 
+                 
+                while(sc.hasNext())                             //加个多组输入 
+                { 
+                        int flag=1;                             //合理标记 
+                        int top=-1;                             //处理栈栈顶指针 
+                        int j=0;                                //入栈序列指针 
+                         
+                        for(int i=0;i<N;i++)                    //读入输出栈 
+                        { 
+                                out[i] = sc.nextInt(); 
+                        } 
+                         
+                         
+                        for(int i=0;i<N;i++)                    //判断 
+                        { 
+                                while(top==-1 || a[top]!=out[i]) 
+                                { 
+                                        if(j>N-1) 
+                                        { 
+                                                flag=0; 
+                                                break; 
+                                        } 
+                                         
+                                        a[++top] = in[j]; 
+                                        j++; 
+                                } 
+                                 
+                                if(flag==0)        break; 
+                                 
+                                top--; 
+                        } 
+                         
+                        if(flag==1)        System.out.println("Yes"); 
+                        else                System.out.println("No"); 
+                } 
+                         
+                 
+                 
+        } 
+ 
+} 
+```
 
